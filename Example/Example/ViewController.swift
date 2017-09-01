@@ -7,19 +7,106 @@
 //
 
 import UIKit
+import KUIPopOver
+import WebKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    // MARK: - Action
+    @IBAction func onDefaultPopoverShow(_ sender: UIButton) {
+        let popOverViewController = DefaultPopOverViewController()
+        popOverViewController.preferredContentSize = CGSize(width: 200.0, height: 300.0)
+        popOverViewController.popoverPresentationController?.sourceView = sender
+        
+        let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 200.0, height: 300.0)))
+        popOverViewController.view.addSubview(customView)
+        popOverViewController.popoverPresentationController?.sourceRect = sender.bounds
+        present(popOverViewController, animated: true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func onBarButtonItem(_ sender: UIBarButtonItem) {
+        let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 150.0, height: 200.0)))
+        customView.showPopover(barButtonItem: sender)
     }
-
-
+    
+    @IBAction func onCustomPopOverView(_ sender: UIButton) {
+        let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 150.0, height: 200.0)))
+        customView.showPopover(sourceView: sender, sourceRect: sender.bounds)
+    }
+    
+    @IBAction func onCustomPopOverViewController(_ sender: UIButton) {
+        let customViewController = CustomPopOverViewController()
+        customViewController.showPopover(sourceView: sender, sourceRect: sender.bounds)
+    }
 }
 
+class DefaultPopOverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .popover
+        popoverPresentationController?.delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - UIPopoverPresentationControllerDelegate
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+}
+
+class CustomPopOverView: UIView, KUIPopOverUsable {
+ 
+    var contentSize: CGSize {
+        return CGSize(width: 300.0, height: 400.0)
+    }
+    
+    lazy var webView: WKWebView = {
+        let webView: WKWebView = WKWebView(frame: self.frame)
+        webView.load(URLRequest(url: URL(string: "http://github.com")!))
+        return webView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(webView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        webView.frame = self.bounds
+    }
+    
+}
+
+class CustomPopOverViewController: UIViewController, KUIPopOverUsable {
+    
+    var contentSize: CGSize {
+        return CGSize(width: 300.0, height: 400.0)
+    }
+    
+    lazy var webView: WKWebView = {
+        let webView: WKWebView = WKWebView(frame: self.view.frame)
+        webView.load(URLRequest(url: URL(string: "http://github.com")!))
+        return webView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(webView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        webView.frame = view.bounds
+    }
+    
+}

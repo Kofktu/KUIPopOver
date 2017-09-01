@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		C39F31FB1F57E55F00B5F269 /* KUIPopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = C39F31F91F57E55F00B5F269 /* KUIPopOver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C39F322D1F57E65300B5F269 /* KUIPopOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39F322C1F57E65300B5F269 /* KUIPopOver.swift */; };
+		C39F322F1F57E77E00B5F269 /* KUIPopOverUsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39F322E1F57E77E00B5F269 /* KUIPopOverUsable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C39F31F61F57E55F00B5F269 /* KUIPopOver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KUIPopOver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C39F31F91F57E55F00B5F269 /* KUIPopOver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KUIPopOver.h; sourceTree = "<group>"; };
 		C39F31FA1F57E55F00B5F269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C39F322C1F57E65300B5F269 /* KUIPopOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUIPopOver.swift; sourceTree = "<group>"; };
+		C39F322E1F57E77E00B5F269 /* KUIPopOverUsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KUIPopOverUsable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +50,20 @@
 		C39F31F81F57E55F00B5F269 /* KUIPopOver */ = {
 			isa = PBXGroup;
 			children = (
+				C39F322B1F57E64C00B5F269 /* Classes */,
 				C39F31F91F57E55F00B5F269 /* KUIPopOver.h */,
 				C39F31FA1F57E55F00B5F269 /* Info.plist */,
 			);
 			path = KUIPopOver;
+			sourceTree = "<group>";
+		};
+		C39F322B1F57E64C00B5F269 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C39F322C1F57E65300B5F269 /* KUIPopOver.swift */,
+				C39F322E1F57E77E00B5F269 /* KUIPopOverUsable.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +110,7 @@
 					C39F31F51F57E55F00B5F269 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = KLVLNTBFM4;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39F322D1F57E65300B5F269 /* KUIPopOver.swift in Sources */,
+				C39F322F1F57E77E00B5F269 /* KUIPopOverUsable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +259,7 @@
 		C39F31FF1F57E55F00B5F269 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KLVLNTBFM4;
@@ -255,6 +273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.homefactory.KUIPopOver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -262,6 +281,7 @@
 		C39F32001F57E55F00B5F269 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KLVLNTBFM4;
