@@ -37,20 +37,30 @@ extension KUIPopOverUsable where Self: UIViewController {
         return UIApplication.shared.keyWindow?.rootViewController?.topPresentedViewController
     }
     
-    public func showPopover(sourceView: UIView, sourceRect: CGRect) {
+    private func setup() {
         modalPresentationStyle = .popover
         preferredContentSize = contentSize
+        popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+    }
+    
+    public func setupPopover(sourceView: UIView, sourceRect: CGRect) {
+        setup()
         popoverPresentationController?.sourceView = sourceView
         popoverPresentationController?.sourceRect = sourceRect
-        popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+    }
+    
+    public func setupPopover(barButtonItem: UIBarButtonItem) {
+        setup()
+        popoverPresentationController?.barButtonItem = barButtonItem
+    }
+    
+    public func showPopover(sourceView: UIView, sourceRect: CGRect) {
+        setupPopover(sourceView: sourceView, sourceRect: sourceRect)
         rootViewController?.present(self, animated: true, completion: nil)
     }
     
     public func showPopover(barButtonItem: UIBarButtonItem) {
-        modalPresentationStyle = .popover
-        preferredContentSize = contentSize
-        popoverPresentationController?.barButtonItem = barButtonItem
-        popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        setupPopover(barButtonItem: barButtonItem)
         rootViewController?.present(self, animated: true, completion: nil)
     }
     

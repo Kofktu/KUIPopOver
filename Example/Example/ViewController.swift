@@ -38,6 +38,14 @@ class ViewController: UIViewController {
         let customViewController = CustomPopOverViewController()
         customViewController.showPopover(sourceView: sender, sourceRect: sender.bounds)
     }
+    
+    @IBAction func onPopOverNavigationViewController(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController") as! CustomPushViewController
+        let naviController = UINavigationController(rootViewController: viewController)
+        naviController.setupPopover(sourceView: sender, sourceRect: sender.bounds)
+        present(naviController, animated: true, completion: nil)
+    }
 }
 
 class DefaultPopOverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
@@ -107,6 +115,17 @@ class CustomPopOverViewController: UIViewController, KUIPopOverUsable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         webView.frame = view.bounds
+    }
+    
+}
+
+class CustomPushViewController: UIViewController, KUIPopOverUsable {
+    
+    
+    @IBAction func onPushViewController(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController")
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
