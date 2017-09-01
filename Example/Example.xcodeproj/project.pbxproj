@@ -374,6 +374,7 @@
 				C39F321E1F57E56E00B5F269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

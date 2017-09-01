@@ -11,7 +11,15 @@ import UIKit
 
 public protocol KUIPopOverUsable {
     
-    var preferredContentSize: CGSize { get }
+    var contentSize: CGSize { get }
     var contentView: UIView { get }
+    
+}
+
+public extension KUIPopOverUsable {
+    
+    var contentSize: CGSize {
+        return CGSize(width: 150.0, height: 200.0)
+    }
     
 }
