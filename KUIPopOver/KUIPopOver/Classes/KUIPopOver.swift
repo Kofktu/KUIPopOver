@@ -15,6 +15,10 @@ extension KUIPopOverUsable where Self: UIView {
         return self
     }
     
+    public var contentSize: CGSize {
+        return frame.size
+    }
+    
     public func showPopover(sourceView: UIView, sourceRect: CGRect) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         usableViewController.showPopover(sourceView: sourceView, sourceRect: sourceRect)
@@ -59,9 +63,39 @@ extension KUIPopOverUsable where Self: UIViewController {
         rootViewController?.present(self, animated: true, completion: nil)
     }
     
+    public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect) {
+        let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
+        naviController.modalPresentationStyle = .popover
+        naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        naviController.popoverPresentationController?.sourceView = sourceView
+        naviController.popoverPresentationController?.sourceRect = sourceRect
+        rootViewController?.present(naviController, animated: true, completion: nil)
+    }
+    
     public func showPopover(barButtonItem: UIBarButtonItem) {
         setupPopover(barButtonItem: barButtonItem)
         rootViewController?.present(self, animated: true, completion: nil)
+    }
+    
+    public func showPopover(withNavigationController barButtonItem: UIBarButtonItem) {
+        let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
+        naviController.modalPresentationStyle = .popover
+        naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        naviController.popoverPresentationController?.barButtonItem = barButtonItem
+        rootViewController?.present(naviController, animated: true, completion: nil)
+    }
+}
+
+private final class KUIPopOverUsableNavigationController: UINavigationController {
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if let popOverUsable = visibleViewController as? KUIPopOverUsable {
+            preferredContentSize = popOverUsable.contentSize
+        } else {
+            preferredContentSize = visibleViewController?.preferredContentSize ?? preferredContentSize
+        }
     }
     
 }
@@ -81,6 +115,7 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
     convenience init(popOverUsable: KUIPopOverUsable) {
         self.init()
         self.popOverUsable = popOverUsable
+        preferredContentSize = popOverUsable.contentSize
     }
     
     override func viewDidLoad() {

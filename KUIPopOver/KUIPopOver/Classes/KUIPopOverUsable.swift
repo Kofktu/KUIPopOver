@@ -15,11 +15,3 @@ public protocol KUIPopOverUsable {
     var contentView: UIView { get }
     
 }
-
-public extension KUIPopOverUsable {
-    
-    var contentSize: CGSize {
-        return CGSize(width: 150.0, height: 200.0)
-    }
-    
-}

@@ -42,9 +42,7 @@ class ViewController: UIViewController {
     @IBAction func onPopOverNavigationViewController(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController") as! CustomPushViewController
-        let naviController = UINavigationController(rootViewController: viewController)
-        naviController.setupPopover(sourceView: sender, sourceRect: sender.bounds)
-        present(naviController, animated: true, completion: nil)
+        viewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
     }
 }
 
@@ -121,10 +119,23 @@ class CustomPopOverViewController: UIViewController, KUIPopOverUsable {
 
 class CustomPushViewController: UIViewController, KUIPopOverUsable {
     
+    private lazy var size: CGSize = {
+        return CGSize(width: 250.0, height: 100.0 + CGFloat(arc4random_uniform(200)))
+    }()
+    
+    var contentSize: CGSize {
+        return size
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        preferredContentSize = size
+        navigationItem.title = size.debugDescription
+    }
     
     @IBAction func onPushViewController(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController") as! CustomPushViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
     
