@@ -67,18 +67,32 @@
                                     <action selector="onCustomPopOverViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2JO-up-cgM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byn-Fp-ToI">
+                                <rect key="frame" x="20" y="234" width="335" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="olw-N9-GwE"/>
+                                </constraints>
+                                <state key="normal" title="PushNavigationController"/>
+                                <connections>
+                                    <action selector="onPopOverNavigationViewController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CY4-81-UoM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lWq-yG-fhh" firstAttribute="centerX" secondItem="uYP-05-xhS" secondAttribute="centerX" id="06S-Sp-Cyv"/>
                             <constraint firstAttribute="trailing" secondItem="uYP-05-xhS" secondAttribute="trailing" constant="20" id="2wt-qd-Sr7"/>
+                            <constraint firstItem="byn-Fp-ToI" firstAttribute="width" secondItem="uYP-05-xhS" secondAttribute="width" id="8zt-Ws-XUw"/>
                             <constraint firstItem="lWq-yG-fhh" firstAttribute="height" secondItem="uYP-05-xhS" secondAttribute="height" id="BlG-CZ-VdL"/>
                             <constraint firstItem="lWq-yG-fhh" firstAttribute="width" secondItem="uYP-05-xhS" secondAttribute="width" id="DDG-xk-u0x"/>
                             <constraint firstItem="xKY-gS-zSb" firstAttribute="height" secondItem="uYP-05-xhS" secondAttribute="height" id="Ldk-uP-kV2"/>
                             <constraint firstItem="xKY-gS-zSb" firstAttribute="centerX" secondItem="uYP-05-xhS" secondAttribute="centerX" id="Lou-71-mz9"/>
                             <constraint firstItem="xKY-gS-zSb" firstAttribute="top" secondItem="lWq-yG-fhh" secondAttribute="bottom" constant="20" id="R1o-vm-dvl"/>
+                            <constraint firstItem="byn-Fp-ToI" firstAttribute="top" secondItem="xKY-gS-zSb" secondAttribute="bottom" constant="20" id="TM0-d6-N6D"/>
                             <constraint firstItem="xKY-gS-zSb" firstAttribute="width" secondItem="uYP-05-xhS" secondAttribute="width" id="UaO-3X-V0h"/>
+                            <constraint firstItem="byn-Fp-ToI" firstAttribute="height" secondItem="uYP-05-xhS" secondAttribute="height" id="WOi-RV-Cx4"/>
                             <constraint firstItem="uYP-05-xhS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="bNe-6n-uiZ"/>
+                            <constraint firstItem="byn-Fp-ToI" firstAttribute="centerX" secondItem="uYP-05-xhS" secondAttribute="centerX" id="fVp-Kr-9cH"/>
                             <constraint firstItem="lWq-yG-fhh" firstAttribute="top" secondItem="uYP-05-xhS" secondAttribute="bottom" constant="20" id="iwM-f0-8SH"/>
                             <constraint firstItem="uYP-05-xhS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="o1v-K5-Any"/>
                         </constraints>
@@ -94,6 +108,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="170" y="116"/>
+        </scene>
+        <!--Custom Push View Controller-->
+        <scene sceneID="Wgc-D4-NnW">
+            <objects>
+                <viewController storyboardIdentifier="CustomPushViewController" id="JaV-22-2nL" customClass="CustomPushViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SbH-cK-d6F"/>
+                        <viewControllerLayoutGuide type="bottom" id="aMj-8g-xLS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nhL-Qd-od4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-jB-x63">
+                                <rect key="frame" x="117.5" y="318.5" width="139" height="30"/>
+                                <state key="normal" title="Push ViewController"/>
+                                <connections>
+                                    <action selector="onPushViewController:" destination="JaV-22-2nL" eventType="touchUpInside" id="psa-RR-Vrs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eRm-jB-x63" firstAttribute="centerX" secondItem="nhL-Qd-od4" secondAttribute="centerX" id="ApM-su-bNO"/>
+                            <constraint firstItem="eRm-jB-x63" firstAttribute="centerY" secondItem="nhL-Qd-od4" secondAttribute="centerY" id="Dgn-iO-dYM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0S-Jd-j3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="116"/>
         </scene>
     </scenes>
 </document>
