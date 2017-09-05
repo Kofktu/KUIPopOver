@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3655DAA1F5E3E900070E243 /* KUIPopOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3655DA91F5E3E890070E243 /* KUIPopOver.framework */; };
+		C3655DAB1F5E3E900070E243 /* KUIPopOver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3655DA91F5E3E890070E243 /* KUIPopOver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C39F320E1F57E56E00B5F269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39F320D1F57E56E00B5F269 /* AppDelegate.swift */; };
 		C39F32101F57E56E00B5F269 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39F320F1F57E56E00B5F269 /* ViewController.swift */; };
 		C39F32131F57E56E00B5F269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39F32111F57E56E00B5F269 /* Main.storyboard */; };
 		C39F32151F57E56E00B5F269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C39F32141F57E56E00B5F269 /* Assets.xcassets */; };
 		C39F32181F57E56E00B5F269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39F32161F57E56E00B5F269 /* LaunchScreen.storyboard */; };
-		C39F32251F57E5C200B5F269 /* KUIPopOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39F32241F57E57700B5F269 /* KUIPopOver.framework */; };
-		C39F32261F57E5C200B5F269 /* KUIPopOver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C39F32241F57E57700B5F269 /* KUIPopOver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C39F32231F57E57700B5F269 /* PBXContainerItemProxy */ = {
+		C3655DA81F5E3E890070E243 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C39F321F1F57E57600B5F269 /* KUIPopOver.xcodeproj */;
+			containerPortal = C3655DA41F5E3E890070E243 /* KUIPopOver.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C39F31F61F57E55F00B5F269;
 			remoteInfo = KUIPopOver;
 		};
-		C39F32271F57E5C200B5F269 /* PBXContainerItemProxy */ = {
+		C3655DAC1F5E3E900070E243 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C39F321F1F57E57600B5F269 /* KUIPopOver.xcodeproj */;
+			containerPortal = C3655DA41F5E3E890070E243 /* KUIPopOver.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = C39F31F51F57E55F00B5F269;
 			remoteInfo = KUIPopOver;
@@ -40,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C39F32261F57E5C200B5F269 /* KUIPopOver.framework in Embed Frameworks */,
+				C3655DAB1F5E3E900070E243 /* KUIPopOver.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C3655DA41F5E3E890070E243 /* KUIPopOver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KUIPopOver.xcodeproj; path = ../KUIPopOver.xcodeproj; sourceTree = "<group>"; };
 		C39F320A1F57E56E00B5F269 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C39F320D1F57E56E00B5F269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C39F320F1F57E56E00B5F269 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		C39F32141F57E56E00B5F269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C39F32171F57E56E00B5F269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C39F32191F57E56E00B5F269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C39F321F1F57E57600B5F269 /* KUIPopOver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KUIPopOver.xcodeproj; path = ../KUIPopOver/KUIPopOver.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +63,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C39F32251F57E5C200B5F269 /* KUIPopOver.framework in Frameworks */,
+				C3655DAA1F5E3E900070E243 /* KUIPopOver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3655DA51F5E3E890070E243 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3655DA91F5E3E890070E243 /* KUIPopOver.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C39F32011F57E56E00B5F269 = {
 			isa = PBXGroup;
 			children = (
-				C39F321F1F57E57600B5F269 /* KUIPopOver.xcodeproj */,
+				C3655DA41F5E3E890070E243 /* KUIPopOver.xcodeproj */,
 				C39F320C1F57E56E00B5F269 /* Example */,
 				C39F320B1F57E56E00B5F269 /* Products */,
 			);
@@ -100,14 +108,6 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		C39F32201F57E57600B5F269 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C39F32241F57E57700B5F269 /* KUIPopOver.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,7 +123,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C39F32281F57E5C200B5F269 /* PBXTargetDependency */,
+				C3655DAD1F5E3E900070E243 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -160,8 +160,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C39F32201F57E57600B5F269 /* Products */;
-					ProjectRef = C39F321F1F57E57600B5F269 /* KUIPopOver.xcodeproj */;
+					ProductGroup = C3655DA51F5E3E890070E243 /* Products */;
+					ProjectRef = C3655DA41F5E3E890070E243 /* KUIPopOver.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -172,11 +172,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C39F32241F57E57700B5F269 /* KUIPopOver.framework */ = {
+		C3655DA91F5E3E890070E243 /* KUIPopOver.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = KUIPopOver.framework;
-			remoteRef = C39F32231F57E57700B5F269 /* PBXContainerItemProxy */;
+			remoteRef = C3655DA81F5E3E890070E243 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -207,10 +207,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C39F32281F57E5C200B5F269 /* PBXTargetDependency */ = {
+		C3655DAD1F5E3E900070E243 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = KUIPopOver;
-			targetProxy = C39F32271F57E5C200B5F269 /* PBXContainerItemProxy */;
+			targetProxy = C3655DAC1F5E3E900070E243 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -330,6 +330,7 @@
 		C39F321D1F57E56E00B5F269 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KLVLNTBFM4;
 				INFOPLIST_FILE = Example/Info.plist;
@@ -344,6 +345,7 @@
 		C39F321E1F57E56E00B5F269 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KLVLNTBFM4;
 				INFOPLIST_FILE = Example/Info.plist;
