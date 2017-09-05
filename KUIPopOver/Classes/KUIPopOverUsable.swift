@@ -13,5 +13,14 @@ public protocol KUIPopOverUsable {
     
     var contentSize: CGSize { get }
     var contentView: UIView { get }
+    var arrowDirection: UIPopoverArrowDirection { get }
+    
+}
+
+extension KUIPopOverUsable {
+    
+    public var arrowDirection: UIPopoverArrowDirection {
+        return .any
+    }
     
 }
