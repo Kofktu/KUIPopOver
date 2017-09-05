@@ -41,6 +41,13 @@ extension KUIPopOverUsable where Self: UIViewController {
         return UIApplication.shared.keyWindow?.rootViewController?.topPresentedViewController
     }
     
+    private var popOverUsableNavigationController: KUIPopOverUsableNavigationController {
+        let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
+        naviController.modalPresentationStyle = .popover
+        naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        return naviController
+    }
+    
     private func setup() {
         modalPresentationStyle = .popover
         preferredContentSize = contentSize
@@ -64,9 +71,7 @@ extension KUIPopOverUsable where Self: UIViewController {
     }
     
     public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect) {
-        let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
-        naviController.modalPresentationStyle = .popover
-        naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        let naviController = popOverUsableNavigationController
         naviController.popoverPresentationController?.sourceView = sourceView
         naviController.popoverPresentationController?.sourceRect = sourceRect
         rootViewController?.present(naviController, animated: true, completion: nil)
@@ -78,9 +83,7 @@ extension KUIPopOverUsable where Self: UIViewController {
     }
     
     public func showPopover(withNavigationController barButtonItem: UIBarButtonItem) {
-        let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
-        naviController.modalPresentationStyle = .popover
-        naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        let naviController = popOverUsableNavigationController
         naviController.popoverPresentationController?.barButtonItem = barButtonItem
         rootViewController?.present(naviController, animated: true, completion: nil)
     }
