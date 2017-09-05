@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "KUIPopOver"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Easy to use PopOver in iOS"
 
   # This description is used to generate tags and improve search results.

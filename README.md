@@ -34,12 +34,26 @@ github "Kofktu/KUIPopOver"
 
 ## Usage
 
+#### Before
+
+```swift
+let popOverViewController = DefaultPopOverViewController()
+popOverViewController.preferredContentSize = CGSize(width: 200.0, height: 300.0)
+popOverViewController.popoverPresentationController?.sourceView = sender
+
+let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 200.0, height: 300.0)))
+popOverViewController.view.addSubview(customView)
+popOverViewController.popoverPresentationController?.sourceRect = sender.bounds
+present(popOverViewController, animated: true, completion: nil)
+```
+
 #### KUIPopOverUsable
 
 ```swift
 public protocol KUIPopOverUsable {
     var contentSize: CGSize { get }
     var contentView: UIView { get }
+	var arrowDirection: UIPopoverArrowDirection { get }
 }
 
 ```
