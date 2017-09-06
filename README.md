@@ -53,7 +53,7 @@ present(popOverViewController, animated: true, completion: nil)
 public protocol KUIPopOverUsable {
     var contentSize: CGSize { get }
     var contentView: UIView { get }
-	var arrowDirection: UIPopoverArrowDirection { get }
+    var arrowDirection: UIPopoverArrowDirection { get }
 }
 
 ```
@@ -63,6 +63,7 @@ public protocol KUIPopOverUsable {
 ```swift
 public func showPopover(sourceView: UIView, sourceRect: CGRect)
 public func showPopover(barButtonItem: UIBarButtonItem)
+public func dismissPopover(animated: Bool)
 ```
 
 #### for UIViewController
@@ -72,6 +73,7 @@ public func showPopover(sourceView: UIView, sourceRect: CGRect)
 public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect)
 public func showPopover(barButtonItem: UIBarButtonItem)
 public func showPopover(withNavigationController barButtonItem: UIBarButtonItem)
+public func dismissPopover(animated: Bool)
 ```
 
 ## At a Glance
@@ -80,7 +82,7 @@ public func showPopover(withNavigationController barButtonItem: UIBarButtonItem)
 
 ```swift
 class CustomView: UIView, KUIPopOverUsable {
-	// The default size is the size of the view, and you can override it if you want to customize it.
+    // The default size is the size of the view, and you can override it if you want to customize it.
     var contentSize: CGSize {
     	return Size
     }
@@ -88,14 +90,15 @@ class CustomView: UIView, KUIPopOverUsable {
 
 let view = CustomView()
 view.showPopover(barButtonItem: sender)
+view.dismissPopover(animated: true)
 ```
 
 #### for UIViewController
 
 ```swift
 class CustomViewController: UIViewController, KUIPopOverUsable {
-	var contentSize: CGSize {
-		// PopOver preferredContentSize
+    var contentSize: CGSize {
+	    // PopOver preferredContentSize
     }
 }
 
@@ -108,7 +111,9 @@ customViewController.showPopover(sourceView: sender, sourceRect: sender.bounds)
 customViewController.showPopover(barButtonItem: sender)
 
 // with NavigationController
-viewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
+customViewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
+
+customViewController.dismissPopover(animated: true)
 ```
 
 ## Authors
