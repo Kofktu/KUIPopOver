@@ -44,6 +44,7 @@ extension KUIPopOverUsable where Self: UIViewController {
     private var popOverUsableNavigationController: KUIPopOverUsableNavigationController {
         let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
         naviController.modalPresentationStyle = .popover
+        naviController.popoverPresentationController?.permittedArrowDirections = arrowDirection
         naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
         return naviController
     }
@@ -52,6 +53,7 @@ extension KUIPopOverUsable where Self: UIViewController {
         modalPresentationStyle = .popover
         preferredContentSize = contentSize
         popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        popoverPresentationController?.permittedArrowDirections = arrowDirection
     }
     
     public func setupPopover(sourceView: UIView, sourceRect: CGRect) {
@@ -111,6 +113,10 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
     
     var contentView: UIView {
         return view
+    }
+    
+    var arrowDirection: UIPopoverArrowDirection {
+        return popOverUsable.arrowDirection
     }
     
     private var popOverUsable: KUIPopOverUsable!
