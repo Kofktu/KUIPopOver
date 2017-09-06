@@ -27,6 +27,10 @@ class ViewController: UIViewController {
     @IBAction func onBarButtonItem(_ sender: UIBarButtonItem) {
         let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 150.0, height: 200.0)))
         customView.showPopover(barButtonItem: sender)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            customView.dismissPopover(animated: true)
+        }
     }
     
     @IBAction func onCustomPopOverView(_ sender: UIButton) {
@@ -38,6 +42,9 @@ class ViewController: UIViewController {
         let customViewController = CustomPopOverViewController()
         customViewController.showPopover(sourceView: sender, sourceRect: sender.bounds)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            customViewController.dismissPopover(animated: true)
+        }
     }
     
     @IBAction func onPopOverNavigationViewController(_ sender: UIButton) {
