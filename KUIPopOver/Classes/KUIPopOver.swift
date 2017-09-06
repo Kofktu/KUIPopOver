@@ -9,6 +9,28 @@
 import Foundation
 import UIKit
 
+fileprivate class KUIPopOverUsableDismissHandlerWrapper {
+    typealias DismissHandler = ((Bool) -> Void)
+    var closure: DismissHandler?
+    
+    init(_ closure: DismissHandler?) {
+        self.closure = closure
+    }
+}
+
+fileprivate extension UIView {
+    
+    struct AssociatedKeys {
+        static var onDismissHandler = "onDismissHandler"
+    }
+    
+    fileprivate var onDismissHandler: KUIPopOverUsableDismissHandlerWrapper.DismissHandler? {
+        get { return (objc_getAssociatedObject(self, &AssociatedKeys.onDismissHandler) as? KUIPopOverUsableDismissHandlerWrapper)?.closure }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.onDismissHandler, KUIPopOverUsableDismissHandlerWrapper(newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
+}
+
 extension KUIPopOverUsable where Self: UIView {
 
     public var contentView: UIView {
@@ -22,13 +44,24 @@ extension KUIPopOverUsable where Self: UIView {
     public func showPopover(sourceView: UIView, sourceRect: CGRect) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         usableViewController.showPopover(sourceView: sourceView, sourceRect: sourceRect)
+        onDismissHandler = { [weak self] animated in
+            usableViewController.dismiss(animated: animated, completion: nil)
+            self?.onDismissHandler = nil
+        }
     }
     
     public func showPopover(barButtonItem: UIBarButtonItem) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         usableViewController.showPopover(barButtonItem: barButtonItem)
+        onDismissHandler = { [weak self] animated in
+            usableViewController.dismiss(animated: animated, completion: nil)
+            self?.onDismissHandler = nil
+        }
     }
     
+    public func dismissPopover(animated: Bool) {
+        onDismissHandler?(animated)
+    }
 }
 
 extension KUIPopOverUsable where Self: UIViewController {
@@ -44,6 +77,7 @@ extension KUIPopOverUsable where Self: UIViewController {
     private var popOverUsableNavigationController: KUIPopOverUsableNavigationController {
         let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
         naviController.modalPresentationStyle = .popover
+        naviController.popoverPresentationController?.permittedArrowDirections = arrowDirection
         naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
         return naviController
     }
@@ -52,6 +86,7 @@ extension KUIPopOverUsable where Self: UIViewController {
         modalPresentationStyle = .popover
         preferredContentSize = contentSize
         popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        popoverPresentationController?.permittedArrowDirections = arrowDirection
     }
     
     public func setupPopover(sourceView: UIView, sourceRect: CGRect) {
@@ -87,6 +122,10 @@ extension KUIPopOverUsable where Self: UIViewController {
         naviController.popoverPresentationController?.barButtonItem = barButtonItem
         rootViewController?.present(naviController, animated: true, completion: nil)
     }
+    
+    public func dismissPopover(animated: Bool) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 private final class KUIPopOverUsableNavigationController: UINavigationController {
@@ -111,6 +150,10 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
     
     var contentView: UIView {
         return view
+    }
+    
+    var arrowDirection: UIPopoverArrowDirection {
+        return popOverUsable.arrowDirection
     }
     
     private var popOverUsable: KUIPopOverUsable!
