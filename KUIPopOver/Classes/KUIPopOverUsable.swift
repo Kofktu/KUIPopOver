@@ -24,3 +24,9 @@ extension KUIPopOverUsable {
     }
     
 }
+
+public extension UIPopoverArrowDirection {
+    public static var none: UIPopoverArrowDirection {
+        return UIPopoverArrowDirection(rawValue: 0)
+    }
+}
