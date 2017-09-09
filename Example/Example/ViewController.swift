@@ -80,7 +80,7 @@ class CustomPopOverView: UIView, KUIPopOverUsable {
     }
     
     var arrowDirection: UIPopoverArrowDirection {
-        return .up
+        return .none
     }
     
     lazy var webView: WKWebView = {
