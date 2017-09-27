@@ -1,6 +1,6 @@
 # KUIPopOver
 
-![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![CocoaPods](http://img.shields.io/cocoapods/v/KUIPopOver.svg?style=flat)](http://cocoapods.org/?q=name%3AKUIPopOver%20author%3AKofktu)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -11,6 +11,7 @@
 ## Requirements
 - iOS 8.0+
 - Swift 3.0
+- Swift 4.0 (swift4 branch) 
 
 ## Example
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
