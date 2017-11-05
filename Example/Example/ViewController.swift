@@ -111,6 +111,10 @@ class CustomPopOverViewController: UIViewController, KUIPopOverUsable {
         return CGSize(width: 300.0, height: 400.0)
     }
     
+    var popOverBackgroundColor: UIColor? {
+        return .blue
+    }
+    
     lazy var webView: WKWebView = {
         let webView: WKWebView = WKWebView(frame: self.view.frame)
         webView.load(URLRequest(url: URL(string: "http://github.com")!))
