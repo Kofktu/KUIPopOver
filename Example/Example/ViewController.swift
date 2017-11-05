@@ -79,8 +79,12 @@ class CustomPopOverView: UIView, KUIPopOverUsable {
         return CGSize(width: 300.0, height: 400.0)
     }
     
+    var popOverBackgroundColor: UIColor? {
+        return .black
+    }
+    
     var arrowDirection: UIPopoverArrowDirection {
-        return .none
+        return .up
     }
     
     lazy var webView: WKWebView = {
