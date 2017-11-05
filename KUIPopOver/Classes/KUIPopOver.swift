@@ -154,6 +154,10 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
         return view
     }
     
+    var popOverBackgroundColor: UIColor? {
+        return popOverUsable.popOverBackgroundColor
+    }
+    
     var arrowDirection: UIPopoverArrowDirection {
         return popOverUsable.arrowDirection
     }
