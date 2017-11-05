@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     @IBAction func onCustomPopOverViewController(_ sender: UIButton) {
         let customViewController = CustomPopOverViewController()
-        customViewController.showPopover(sourceView: sender, sourceRect: sender.bounds)
+        customViewController.showPopover(sourceView: sender)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             customViewController.dismissPopover(animated: true)
