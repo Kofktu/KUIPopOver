@@ -185,6 +185,9 @@ private final class KUIPopOverDelegation: NSObject, UIPopoverPresentationControl
         return .none
     }
     
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
 }
 
 private extension UIViewController {
