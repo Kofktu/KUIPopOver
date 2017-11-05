@@ -51,6 +51,7 @@ present(popOverViewController, animated: true, completion: nil)
 public protocol KUIPopOverUsable {
     var contentSize: CGSize { get }
     var contentView: UIView { get }
+    var popOverBackgroundColor: UIColor? { get }
     var arrowDirection: UIPopoverArrowDirection { get }
 }
 
@@ -59,7 +60,7 @@ public protocol KUIPopOverUsable {
 #### for UIView
 
 ```swift
-public func showPopover(sourceView: UIView, sourceRect: CGRect)
+public func showPopover(sourceView: UIView, sourceRect: CGRect?)
 public func showPopover(barButtonItem: UIBarButtonItem)
 public func dismissPopover(animated: Bool)
 ```
@@ -67,8 +68,8 @@ public func dismissPopover(animated: Bool)
 #### for UIViewController
 
 ```swift
-public func showPopover(sourceView: UIView, sourceRect: CGRect)
-public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect)
+public func showPopover(sourceView: UIView, sourceRect: CGRect?)
+public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect?)
 public func showPopover(barButtonItem: UIBarButtonItem)
 public func showPopover(withNavigationController barButtonItem: UIBarButtonItem)
 public func dismissPopover(animated: Bool)
@@ -96,7 +97,7 @@ view.dismissPopover(animated: true)
 ```swift
 class CustomViewController: UIViewController, KUIPopOverUsable {
     var contentSize: CGSize {
-	    // PopOver preferredContentSize
+        // PopOver preferredContentSize
     }
 }
 
