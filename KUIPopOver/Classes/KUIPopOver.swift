@@ -77,8 +77,9 @@ extension KUIPopOverUsable where Self: UIViewController {
     private var popOverUsableNavigationController: KUIPopOverUsableNavigationController {
         let naviController = KUIPopOverUsableNavigationController(rootViewController: self)
         naviController.modalPresentationStyle = .popover
-        naviController.popoverPresentationController?.permittedArrowDirections = arrowDirection
         naviController.popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        naviController.popoverPresentationController?.backgroundColor = popOverBackgroundColor
+        naviController.popoverPresentationController?.permittedArrowDirections = arrowDirection
         return naviController
     }
     
@@ -86,6 +87,7 @@ extension KUIPopOverUsable where Self: UIViewController {
         modalPresentationStyle = .popover
         preferredContentSize = contentSize
         popoverPresentationController?.delegate = KUIPopOverDelegation.shared
+        popoverPresentationController?.backgroundColor = popOverBackgroundColor
         popoverPresentationController?.permittedArrowDirections = arrowDirection
     }
     

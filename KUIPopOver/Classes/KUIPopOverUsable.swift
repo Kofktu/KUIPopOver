@@ -13,11 +13,16 @@ public protocol KUIPopOverUsable {
     
     var contentSize: CGSize { get }
     var contentView: UIView { get }
+    var popOverBackgroundColor: UIColor? { get }
     var arrowDirection: UIPopoverArrowDirection { get }
     
 }
 
 extension KUIPopOverUsable {
+    
+    public var popOverBackgroundColor: UIColor? {
+        return nil
+    }
     
     public var arrowDirection: UIPopoverArrowDirection {
         return .any
