@@ -28,8 +28,10 @@ class ViewController: UIViewController {
         let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 150.0, height: 200.0)))
         customView.showPopover(barButtonItem: sender)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            customView.dismissPopover(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            customView.dismissPopover(animated: true, completion: {
+                print("CustomPopOverView.dismiss.completion")
+            })
         }
     }
     
@@ -42,8 +44,10 @@ class ViewController: UIViewController {
         let customViewController = CustomPopOverViewController()
         customViewController.showPopover(sourceView: sender)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            customViewController.dismissPopover(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            customViewController.dismissPopover(animated: true, completion: {
+                print("CustomPopOverViewController.dismiss.completion")
+            })
         }
     }
     
@@ -51,6 +55,12 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController") as! CustomPushViewController
         viewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            viewController.dismissPopover(animated: false, completion: {
+                print("CustomPushViewController.dismiss.completion")
+            })
+        }
     }
 }
 

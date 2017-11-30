@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+public typealias DismissPopoverCompletion = () -> Void
+
 fileprivate class KUIPopOverUsableDismissHandlerWrapper {
-    typealias DismissHandler = ((Bool) -> Void)
+    typealias DismissHandler = ((Bool, DismissPopoverCompletion?) -> Void)
     var closure: DismissHandler?
     
     init(_ closure: DismissHandler?) {
@@ -44,23 +46,34 @@ extension KUIPopOverUsable where Self: UIView {
     public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         usableViewController.showPopover(sourceView: sourceView, sourceRect: sourceRect)
-        onDismissHandler = { [weak self] animated in
-            usableViewController.dismiss(animated: animated, completion: nil)
-            self?.onDismissHandler = nil
+        onDismissHandler = { [weak self] (animated, completion) in
+            self?.dismiss(usableViewController: usableViewController, animated: animated, completion: completion)
         }
     }
     
     public func showPopover(barButtonItem: UIBarButtonItem) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         usableViewController.showPopover(barButtonItem: barButtonItem)
-        onDismissHandler = { [weak self] animated in
-            usableViewController.dismiss(animated: animated, completion: nil)
-            self?.onDismissHandler = nil
+        onDismissHandler = { [weak self] (animated, completion) in
+            self?.dismiss(usableViewController: usableViewController, animated: animated, completion: completion)
         }
     }
     
-    public func dismissPopover(animated: Bool) {
-        onDismissHandler?(animated)
+    public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion? = nil) {
+        onDismissHandler?(animated, completion)
+    }
+    
+    // MARK: - Private
+    private func dismiss(usableViewController: KUIPopOverUsableViewController, animated: Bool, completion: DismissPopoverCompletion? = nil) {
+        if let completion = completion {
+            usableViewController.dismiss(animated: animated, completion: { [weak self] in
+                self?.onDismissHandler = nil
+                completion()
+            })
+        } else {
+            usableViewController.dismiss(animated: animated, completion: nil)
+            onDismissHandler = nil
+        }
     }
 }
 
@@ -125,8 +138,8 @@ extension KUIPopOverUsable where Self: UIViewController {
         rootViewController?.present(naviController, animated: true, completion: nil)
     }
     
-    public func dismissPopover(animated: Bool) {
-        dismiss(animated: true, completion: nil)
+    public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion? = nil) {
+        dismiss(animated: animated, completion: completion)
     }
 }
 
