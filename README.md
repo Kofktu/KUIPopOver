@@ -57,27 +57,27 @@ public protocol KUIPopOverUsable {
 
 ```
 
-#### for UIView
+#### UIView
 
 ```swift
 public func showPopover(sourceView: UIView, sourceRect: CGRect?)
 public func showPopover(barButtonItem: UIBarButtonItem)
-public func dismissPopover(animated: Bool)
+public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion?)
 ```
 
-#### for UIViewController
+#### UIViewController
 
 ```swift
 public func showPopover(sourceView: UIView, sourceRect: CGRect?)
 public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect?)
 public func showPopover(barButtonItem: UIBarButtonItem)
 public func showPopover(withNavigationController barButtonItem: UIBarButtonItem)
-public func dismissPopover(animated: Bool)
+public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion?)
 ```
 
 ## At a Glance
 
-#### for UIView
+#### UIView
 
 ```swift
 class CustomView: UIView, KUIPopOverUsable {
@@ -90,9 +90,11 @@ class CustomView: UIView, KUIPopOverUsable {
 let view = CustomView()
 view.showPopover(barButtonItem: sender)
 view.dismissPopover(animated: true)
+view.dismissPopover(animated: true, completion: {
+})
 ```
 
-#### for UIViewController
+#### UIViewController
 
 ```swift
 class CustomViewController: UIViewController, KUIPopOverUsable {
@@ -113,6 +115,8 @@ customViewController.showPopover(barButtonItem: sender)
 customViewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
 
 customViewController.dismissPopover(animated: true)
+customViewController.dismissPopover(animated: true, completion: {
+})
 ```
 
 ## Authors
