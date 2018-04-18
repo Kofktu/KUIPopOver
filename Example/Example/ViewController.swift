@@ -26,18 +26,22 @@ class ViewController: UIViewController {
     
     @IBAction func onBarButtonItem(_ sender: UIBarButtonItem) {
         let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 150.0, height: 200.0)))
-        customView.showPopover(barButtonItem: sender)
+        customView.showPopover(barButtonItem: sender) {
+            print("CustomPopOverView.BarButtonItem.show.completion")
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             customView.dismissPopover(animated: true, completion: {
-                print("CustomPopOverView.dismiss.completion")
+                print("CustomPopOverView.BarButtonItem.dismiss.completion")
             })
         }
     }
     
     @IBAction func onCustomPopOverView(_ sender: UIButton) {
         let customView = CustomPopOverView(frame: CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: CGSize(width: 150.0, height: 200.0)))
-        customView.showPopover(sourceView: sender, sourceRect: sender.bounds)
+        customView.showPopover(sourceView: sender) {
+            print("CustomPopOverView.show.completion")
+        }
     }
     
     @IBAction func onCustomPopOverViewController(_ sender: UIButton) {

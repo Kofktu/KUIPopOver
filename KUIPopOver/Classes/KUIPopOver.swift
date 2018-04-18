@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+public typealias ShowPopoverCompletion = () -> Void
 public typealias DismissPopoverCompletion = () -> Void
 
 fileprivate class KUIPopOverUsableDismissHandlerWrapper {
@@ -43,17 +44,17 @@ extension KUIPopOverUsable where Self: UIView {
         return frame.size
     }
     
-    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil) {
+    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil, completion: ShowPopoverCompletion? = nil) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
-        usableViewController.showPopover(sourceView: sourceView, sourceRect: sourceRect)
+        usableViewController.showPopover(sourceView: sourceView, sourceRect: sourceRect, completion: completion)
         onDismissHandler = { [weak self] (animated, completion) in
             self?.dismiss(usableViewController: usableViewController, animated: animated, completion: completion)
         }
     }
     
-    public func showPopover(barButtonItem: UIBarButtonItem) {
+    public func showPopover(barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion? = nil) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
-        usableViewController.showPopover(barButtonItem: barButtonItem)
+        usableViewController.showPopover(barButtonItem: barButtonItem, completion: completion)
         onDismissHandler = { [weak self] (animated, completion) in
             self?.dismiss(usableViewController: usableViewController, animated: animated, completion: completion)
         }
@@ -115,27 +116,27 @@ extension KUIPopOverUsable where Self: UIViewController {
         popoverPresentationController?.barButtonItem = barButtonItem
     }
     
-    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil) {
+    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil, completion: ShowPopoverCompletion? = nil) {
         setupPopover(sourceView: sourceView, sourceRect: sourceRect)
-        rootViewController?.present(self, animated: true, completion: nil)
+        rootViewController?.present(self, animated: true, completion: completion)
     }
     
-    public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect? = nil) {
+    public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect? = nil, completion: ShowPopoverCompletion? = nil) {
         let naviController = popOverUsableNavigationController
         naviController.popoverPresentationController?.sourceView = sourceView
         naviController.popoverPresentationController?.sourceRect = sourceRect ?? sourceView.bounds
-        rootViewController?.present(naviController, animated: true, completion: nil)
+        rootViewController?.present(naviController, animated: true, completion: completion)
     }
     
-    public func showPopover(barButtonItem: UIBarButtonItem) {
+    public func showPopover(barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion? = nil) {
         setupPopover(barButtonItem: barButtonItem)
-        rootViewController?.present(self, animated: true, completion: nil)
+        rootViewController?.present(self, animated: true, completion: completion)
     }
     
-    public func showPopover(withNavigationController barButtonItem: UIBarButtonItem) {
+    public func showPopover(withNavigationController barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion? = nil) {
         let naviController = popOverUsableNavigationController
         naviController.popoverPresentationController?.barButtonItem = barButtonItem
-        rootViewController?.present(naviController, animated: true, completion: nil)
+        rootViewController?.present(naviController, animated: true, completion: completion)
     }
     
     public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion? = nil) {
