@@ -60,18 +60,18 @@ public protocol KUIPopOverUsable {
 #### UIView
 
 ```swift
-public func showPopover(sourceView: UIView, sourceRect: CGRect?)
-public func showPopover(barButtonItem: UIBarButtonItem)
+public func showPopover(sourceView: UIView, sourceRect: CGRect?, completion: ShowPopoverCompletion?)
+public func showPopover(barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion?)
 public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion?)
 ```
 
 #### UIViewController
 
 ```swift
-public func showPopover(sourceView: UIView, sourceRect: CGRect?)
-public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect?)
-public func showPopover(barButtonItem: UIBarButtonItem)
-public func showPopover(withNavigationController barButtonItem: UIBarButtonItem)
+public func showPopover(sourceView: UIView, sourceRect: CGRect?, completion: ShowPopoverCompletion?)
+public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect?, completion: ShowPopoverCompletion?)
+public func showPopover(barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion?)
+public func showPopover(withNavigationController barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion?)
 public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion?)
 ```
 
