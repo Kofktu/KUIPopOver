@@ -44,7 +44,7 @@ extension KUIPopOverUsable where Self: UIView {
         return frame.size
     }
     
-    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil, shouldDismissOnTap:Bool? = false, completion: ShowPopoverCompletion? = nil) {
+    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil, shouldDismissOnTap:Bool = false, completion: ShowPopoverCompletion? = nil) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = shouldDismissOnTap
         usableViewController.showPopover(sourceView: sourceView, sourceRect: sourceRect, completion: completion)
@@ -53,7 +53,7 @@ extension KUIPopOverUsable where Self: UIView {
         }
     }
     
-    public func showPopover(barButtonItem: UIBarButtonItem, shouldDismissOnTap:Bool? = false, completion: ShowPopoverCompletion? = nil) {
+    public func showPopover(barButtonItem: UIBarButtonItem, shouldDismissOnTap:Bool = false, completion: ShowPopoverCompletion? = nil) {
         let usableViewController = KUIPopOverUsableViewController(popOverUsable: self)
         KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = shouldDismissOnTap
         usableViewController.showPopover(barButtonItem: barButtonItem, completion: completion)
@@ -119,13 +119,13 @@ extension KUIPopOverUsable where Self: UIViewController {
         popoverPresentationController?.barButtonItem = barButtonItem
     }
     
-    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil, shouldDismissOnTap:Bool? = false, completion: ShowPopoverCompletion? = nil) {
+    public func showPopover(sourceView: UIView, sourceRect: CGRect? = nil, shouldDismissOnTap:Bool = false, completion: ShowPopoverCompletion? = nil) {
         KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = shouldDismissOnTap
         setupPopover(sourceView: sourceView, sourceRect: sourceRect)
         rootViewController?.present(self, animated: true, completion: completion)
     }
     
-    public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect? = nil, shouldDismissOnTap:Bool? = false, completion: ShowPopoverCompletion? = nil) {
+    public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect? = nil, shouldDismissOnTap:Bool = false, completion: ShowPopoverCompletion? = nil) {
         KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = shouldDismissOnTap
         let naviController = popOverUsableNavigationController
         naviController.popoverPresentationController?.sourceView = sourceView
@@ -133,13 +133,13 @@ extension KUIPopOverUsable where Self: UIViewController {
         rootViewController?.present(naviController, animated: true, completion: completion)
     }
     
-    public func showPopover(barButtonItem: UIBarButtonItem, shouldDismissOnTap:Bool? = false, completion: ShowPopoverCompletion? = nil) {
+    public func showPopover(barButtonItem: UIBarButtonItem, shouldDismissOnTap:Bool = false, completion: ShowPopoverCompletion? = nil) {
         KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = shouldDismissOnTap
         setupPopover(barButtonItem: barButtonItem)
         rootViewController?.present(self, animated: true, completion: completion)
     }
     
-    public func showPopover(withNavigationController barButtonItem: UIBarButtonItem, shouldDismissOnTap:Bool? = false, completion: ShowPopoverCompletion? = nil) {
+    public func showPopover(withNavigationController barButtonItem: UIBarButtonItem, shouldDismissOnTap:Bool = false, completion: ShowPopoverCompletion? = nil) {
         KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = shouldDismissOnTap
         let naviController = popOverUsableNavigationController
         naviController.popoverPresentationController?.barButtonItem = barButtonItem
@@ -166,7 +166,7 @@ private final class KUIPopOverUsableNavigationController: UINavigationController
 }
 
 private final class KUIPopOverUsableViewController: UIViewController, KUIPopOverUsable {
-    
+   
     var contentSize: CGSize {
         return popOverUsable.contentSize
     }
@@ -181,6 +181,16 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
     
     var arrowDirection: UIPopoverArrowDirection {
         return popOverUsable.arrowDirection
+    }
+    
+    var shouldDismiss: Bool {
+        get{
+            return self.shouldDismiss
+        }
+        set {
+            self.shouldDismiss = newValue
+            KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = newValue
+        }
     }
     
     private var popOverUsable: KUIPopOverUsable!
@@ -206,7 +216,8 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
 private final class KUIPopOverDelegation: NSObject, UIPopoverPresentationControllerDelegate {
     
     static let shared = KUIPopOverDelegation()
-    var shouldDismissOnOutsideTap:Bool? = false
+    var shouldDismissOnOutsideTap:Bool = false
+    var dismissDelegate:DismissPopoverCompletion?
     
     // MARK: - UIPopoverPresentationControllerDelegate
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -218,7 +229,7 @@ private final class KUIPopOverDelegation: NSObject, UIPopoverPresentationControl
     }
     
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return shouldDismissOnOutsideTap!
+        return shouldDismissOnOutsideTap
     }
 }
 
