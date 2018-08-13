@@ -183,16 +183,6 @@ private final class KUIPopOverUsableViewController: UIViewController, KUIPopOver
         return popOverUsable.arrowDirection
     }
     
-    var shouldDismiss: Bool {
-        get{
-            return self.shouldDismiss
-        }
-        set {
-            self.shouldDismiss = newValue
-            KUIPopOverDelegation.shared.shouldDismissOnOutsideTap = newValue
-        }
-    }
-    
     private var popOverUsable: KUIPopOverUsable!
     
     convenience init(popOverUsable: KUIPopOverUsable) {
@@ -217,7 +207,6 @@ private final class KUIPopOverDelegation: NSObject, UIPopoverPresentationControl
     
     static let shared = KUIPopOverDelegation()
     var shouldDismissOnOutsideTap:Bool = false
-    var dismissDelegate:DismissPopoverCompletion?
     
     // MARK: - UIPopoverPresentationControllerDelegate
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

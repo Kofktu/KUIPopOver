@@ -15,7 +15,6 @@ public protocol KUIPopOverUsable {
     var contentView: UIView { get }
     var popOverBackgroundColor: UIColor? { get }
     var arrowDirection: UIPopoverArrowDirection { get }
-    var shouldDismiss:Bool{get set}
 }
 
 extension KUIPopOverUsable {
@@ -26,10 +25,6 @@ extension KUIPopOverUsable {
     
     public var arrowDirection: UIPopoverArrowDirection {
         return .any
-    }
-    
-    public var shouldDismiss: Bool {
-        return false
     }
 }
 
