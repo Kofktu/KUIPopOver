@@ -10,7 +10,8 @@
 
 ## Requirements
 - iOS 8.0+
-- Swift 4.0
+- Swift 4.2
+- Swift 4.0 ([1.0.4](https://github.com/Kofktu/KUIPopOver/tree/1.0.4))
 - Swift 3.0 ([0.0.4](https://github.com/Kofktu/KUIPopOver/tree/0.0.4))
 
 ## Installation

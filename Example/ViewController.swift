@@ -58,13 +58,7 @@ class ViewController: UIViewController {
     @IBAction func onPopOverNavigationViewController(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController") as! CustomPushViewController
-        viewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            viewController.dismissPopover(animated: false, completion: {
-                print("CustomPushViewController.dismiss.completion")
-            })
-        }
+        viewController.showPopover(withNavigationController: sender)
     }
 }
 
