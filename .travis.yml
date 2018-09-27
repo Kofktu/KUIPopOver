@@ -7,7 +7,7 @@ env:
   - SDK="iphoneos12.0"
 
 script:
-  - xcodebuild clean build -project KUIPopOver.xcodeproj -sdk $SDK -configuration Debug CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -project KUIPopOver.xcodeproj clean build -sdk $SDK -configuration Debug CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=NO
 
 before_install:
   - xcodebuild -showsdks
