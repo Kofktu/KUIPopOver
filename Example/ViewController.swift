@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     @IBAction func onPopOverNavigationViewController(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "CustomPushViewController") as! CustomPushViewController
-        viewController.showPopover(withNavigationController: sender)
+        viewController.showPopover(withNavigationController: sender, shouldDismissOnTap: false)
     }
 }
 
