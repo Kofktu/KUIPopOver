@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C338E6BF2170A11900C268B6 /* KUIPopOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3887ECF215C7E3F00BFDFAB /* KUIPopOver.framework */; };
+		C338E6C02170A11900C268B6 /* KUIPopOver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3887ECF215C7E3F00BFDFAB /* KUIPopOver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C39F320E1F57E56E00B5F269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39F320D1F57E56E00B5F269 /* AppDelegate.swift */; };
 		C39F32101F57E56E00B5F269 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39F320F1F57E56E00B5F269 /* ViewController.swift */; };
 		C39F32131F57E56E00B5F269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39F32111F57E56E00B5F269 /* Main.storyboard */; };
@@ -15,6 +17,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C338E6C12170A11900C268B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3887ECA215C7E3F00BFDFAB /* KUIPopOver.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C39F31F51F57E55F00B5F269;
+			remoteInfo = KUIPopOver;
+		};
 		C3887ECE215C7E3F00BFDFAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3887ECA215C7E3F00BFDFAB /* KUIPopOver.xcodeproj */;
@@ -31,6 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C338E6C02170A11900C268B6 /* KUIPopOver.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C338E6BF2170A11900C268B6 /* KUIPopOver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +123,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C338E6C22170A11900C268B6 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -193,6 +205,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C338E6C22170A11900C268B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KUIPopOver;
+			targetProxy = C338E6C12170A11900C268B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C39F32111F57E56E00B5F269 /* Main.storyboard */ = {
