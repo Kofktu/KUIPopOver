@@ -70,9 +70,9 @@ public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion?
 
 ```swift
 public func showPopover(sourceView: UIView, sourceRect: CGRect?, completion: ShowPopoverCompletion?)
-public func showPopover(withNavigationController sourceView: UIView, sourceRect: CGRect?, completion: ShowPopoverCompletion?)
+public func showPopoverWithNavigationController(sourceView: UIView, sourceRect: CGRect?, completion: ShowPopoverCompletion?)
 public func showPopover(barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion?)
-public func showPopover(withNavigationController barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion?)
+public func showPopoverWithNavigationController(barButtonItem: UIBarButtonItem, completion: ShowPopoverCompletion?)
 public func dismissPopover(animated: Bool, completion: DismissPopoverCompletion?)
 ```
 
@@ -113,7 +113,7 @@ customViewController.showPopover(sourceView: sender, sourceRect: sender.bounds)
 customViewController.showPopover(barButtonItem: sender)
 
 // with NavigationController
-customViewController.showPopover(withNavigationController: sender, sourceRect: sender.bounds)
+customViewController.showPopoverWithNavigationController(sourceView: sender, sourceRect: sender.bounds)
 
 customViewController.dismissPopover(animated: true)
 customViewController.dismissPopover(animated: true, completion: {
