@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "KUIPopOver"
-  s.version      = "1.1.2"
+  s.version      = "1.2.0"
   s.summary      = "Easy to use PopOver in iOS"
 
   # This description is used to generate tags and improve search results.
@@ -132,5 +132,5 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
-
+  s.swift_versions = [5.0]
 end
