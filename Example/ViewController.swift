@@ -159,6 +159,7 @@ class CustomPushViewController: UIViewController, KUIPopOverUsable {
         super.viewDidLoad()
         preferredContentSize = size
         navigationItem.title = size.debugDescription
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onDoneButton(_:)))
     }
     
     @IBAction func onPushViewController(_ sender: UIButton) {
@@ -167,4 +168,8 @@ class CustomPushViewController: UIViewController, KUIPopOverUsable {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+    @objc
+    private func onDoneButton(_ sender: UIButton) {
+        dismissPopover(animated: true)
+    }
 }

@@ -27,7 +27,7 @@ fileprivate extension UIView {
         static var onDismissHandler = "onDismissHandler"
     }
     
-    fileprivate var onDismissHandler: KUIPopOverUsableDismissHandlerWrapper.DismissHandler? {
+    var onDismissHandler: KUIPopOverUsableDismissHandlerWrapper.DismissHandler? {
         get { return (objc_getAssociatedObject(self, &AssociatedKeys.onDismissHandler) as? KUIPopOverUsableDismissHandlerWrapper)?.closure }
         set { objc_setAssociatedObject(self, &AssociatedKeys.onDismissHandler, KUIPopOverUsableDismissHandlerWrapper(newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
