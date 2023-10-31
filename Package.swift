@@ -16,9 +16,11 @@ let package = Package(
     targets: [
         .target(
             name: "KUIPopOver",
-            path: "KUIPopOver/Classes",
-            sources: ["**/*.swift"]
-        ),
+            dependencies: [],
+            path: "KUIPopOver",
+            sources: ["Classes"],
+            publicHeadersPath: "Classes"
+        )
     ],
     swiftLanguageVersions: [.v5]
 )
